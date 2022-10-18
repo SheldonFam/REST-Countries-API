@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
 import Country from "./Country";
 import Loading from "./Loading";
+import Searchbar from "./Searchbar";
 
-//name,name.common
-//population
-//region
-//capital
 const CountryList = () => {
   const URL = "https://restcountries.com/v3.1/all";
   const [countries, setCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredResults, setFilteredResults] = useState([]);
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -27,27 +25,36 @@ const CountryList = () => {
     fetchCountry();
   }, []);
 
+  const searchCountry = (searchValue) => {
+    setSearchInput(searchValue);
+    if (searchInput !== "") {
+      const fileteredCountry = countries.filter((country) => {
+        return country.name.common
+          .toLowerCase()
+          .includes(searchInput.toLowerCase());
+      });
+      setFilteredResults(fileteredCountry);
+    } else {
+      setFilteredResults(countries);
+    }
+  };
+
   return (
-    <main>
-      {isLoading ? (
-        <Loading />
-      ) : (
+    <>
+      <main>
+        {isLoading && <Loading />}
+        <Searchbar searchCountry={searchCountry} />
         <section className="container-block">
-          {countries.map((country, index) => {
-            return (
-              <Country
-                key={index}
-                name={country.name.common}
-                capital={country.capital}
-                population={country.population}
-                image={country.flags.svg}
-                region={country.region}
-              />
-            );
-          })}
+          {searchInput.length > 1
+            ? filteredResults.map((country, index) => {
+                return <Country countries={country} key={index} />;
+              })
+            : countries.map((country, index) => {
+                return <Country countries={country} key={index} />;
+              })}
         </section>
-      )}
-    </main>
+      </main>
+    </>
   );
 };
 
