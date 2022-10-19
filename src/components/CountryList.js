@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Country from "./Country";
 import Loading from "./Loading";
 import Searchbar from "./Searchbar";
+import Filterbar from "./Filterbar";
 
 const CountryList = () => {
   const URL = "https://restcountries.com/v3.1/all";
@@ -9,6 +10,7 @@ const CountryList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
+  const [filteredRegion, setFilteredRegion] = useState([]);
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -39,12 +41,31 @@ const CountryList = () => {
     }
   };
 
+  const filteredCountryByRegion = (e) => {
+    if (e.target.value !== "all") {
+      const regionFiltered = countries.filter((country) => {
+        return country.region.match(e.target.value);
+      });
+      setFilteredRegion(regionFiltered);
+    } else {
+      setFilteredRegion(countries);
+    }
+  };
+
   return (
     <>
       <main>
         {isLoading && <Loading />}
         <Searchbar searchCountry={searchCountry} />
+        <Filterbar handleFilter={filteredCountryByRegion} />
         <section className="container-block">
+          {filteredCountryByRegion
+            ? filteredRegion.map((country, index) => {
+                return <Country countries={country} key={index} />;
+              })
+            : countries.map((country, index) => {
+                return <Country countries={country} key={index} />;
+              })}
           {searchInput.length > 1
             ? filteredResults.map((country, index) => {
                 return <Country countries={country} key={index} />;
