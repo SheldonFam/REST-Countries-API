@@ -5,7 +5,7 @@ const Country = ({ countries }) => {
   const { name, capital, population, flags, region } = countries;
   return (
     <div className="country-card">
-      <Link to={`/country${name}`}>
+      <Link key={name} to={`/${name.common.toLowerCase()}`}>
         <div className="country-image">
           <img src={flags.svg} alt="" />
         </div>

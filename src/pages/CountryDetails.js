@@ -7,7 +7,7 @@ const CountryDetails = () => {
   const [countries, setCountries] = useState([]);
   const navigate = useNavigate();
 
-  let name = "malaysia";
+  let { name } = useParams();
   console.log(name);
 
   useEffect(() => {
@@ -43,7 +43,14 @@ const CountryDetails = () => {
             <h2>Name:{country.name.common}</h2>
             <div className="details">
               <ul className="left">
-                <li>Native Name: </li>
+                <li>
+                  Native Name:
+                  {
+                    country.name.nativeName[
+                      Object.keys(country.name.nativeName)[0]
+                    ].official
+                  }
+                </li>
                 <li>Population:{country.population}</li>
                 <li>Region:{country.region}</li>
                 <li>SubRegion:{country.subregion}</li>
