@@ -1,12 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Country = ({ countries }) => {
   const { name, capital, population, flags, region } = countries;
   return (
     <div className="country-card">
-      <div className="country-image">
-        <img src={flags.svg} alt="" />
-      </div>
+      <Link to={`/country${name}`}>
+        <div className="country-image">
+          <img src={flags.svg} alt="" />
+        </div>
+      </Link>
       <div className="country-info">
         <h3 className="country-info-heading">{name.common}</h3>
         <ul>

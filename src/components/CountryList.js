@@ -10,69 +10,58 @@ const CountryList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
-  const [filteredRegion, setFilteredRegion] = useState([]);
+  const [selectInput, setSelectInput] = useState("");
 
   useEffect(() => {
     const fetchCountry = async () => {
       try {
         const response = await fetch(URL);
         const data = await response.json();
+        setIsLoading(false);
         setCountries(data);
-        setIsLoading(false);
       } catch (error) {
-        setIsLoading(false);
         console.log(error);
       }
     };
     fetchCountry();
   }, []);
 
-  const searchCountry = (searchValue) => {
-    setSearchInput(searchValue);
-    if (searchInput !== "") {
-      const fileteredCountry = countries.filter((country) => {
-        return country.name.common
-          .toLowerCase()
-          .includes(searchInput.toLowerCase());
-      });
-      setFilteredResults(fileteredCountry);
-    } else {
-      setFilteredResults(countries);
-    }
+  const searchCountry = (e) => {
+    setSearchInput(e.target.value);
   };
 
   const filteredCountryByRegion = (e) => {
-    if (e.target.value !== "all") {
-      const regionFiltered = countries.filter((country) => {
-        return country.region.match(e.target.value);
-      });
-      setFilteredRegion(regionFiltered);
-    } else {
-      setFilteredRegion(countries);
-    }
+    setSelectInput(e.target.value);
   };
+
+  useEffect(() => {
+    const result = countries.filter(
+      (country) =>
+        (!searchInput ||
+          country.name.common
+            .toLowerCase()
+            .includes(searchInput.toLowerCase())) &&
+        (!selectInput || country.region === selectInput)
+    );
+    setFilteredResults(result);
+    console.log(result);
+  }, [searchInput, countries, selectInput]);
 
   return (
     <>
       <main>
-        {isLoading && <Loading />}
-        <Searchbar searchCountry={searchCountry} />
-        <Filterbar handleFilter={filteredCountryByRegion} />
+        <Searchbar searchCountry={searchCountry} value={searchInput} />
+        <Filterbar filterRegion={filteredCountryByRegion} value={selectInput} />
         <section className="container-block">
-          {filteredCountryByRegion
-            ? filteredRegion.map((country, index) => {
-                return <Country countries={country} key={index} />;
-              })
-            : countries.map((country, index) => {
-                return <Country countries={country} key={index} />;
-              })}
-          {searchInput.length > 1
-            ? filteredResults.map((country, index) => {
-                return <Country countries={country} key={index} />;
-              })
-            : countries.map((country, index) => {
-                return <Country countries={country} key={index} />;
-              })}
+          {isLoading ? (
+            <Loading />
+          ) : filteredResults.length > 0 ? (
+            filteredResults.map((country, index) => (
+              <Country countries={country} key={index} />
+            ))
+          ) : (
+            <p>No country...</p>
+          )}
         </section>
       </main>
     </>

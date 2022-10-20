@@ -8,7 +8,8 @@ const Searchbar = (props) => {
         type="text"
         id="name"
         placeholder="Search for a country..."
-        onChange={(e) => props.searchCountry(e.target.value)}
+        onChange={props.searchCountry}
+        value={props.value}
       />
     </div>
   );

@@ -1,16 +1,16 @@
 import React from "react";
 
-const Filterbar = ({ handleFilter }) => {
-  const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+const Filterbar = (props) => {
+  const regionList = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   return (
     <div>
-      <select name="Filter By Region" id="" onChange={handleFilter}>
+      <select name="Filter By Region" id="" onChange={props.filterRegion}>
         <option value="none" hidden={true}>
           Filter by Region
         </option>
-        <option value="all">All</option>
-        {regions.map((region) => (
+        <option value="">All</option>
+        {regionList.map((region) => (
           <option key={region} value={region}>
             {region}
           </option>
