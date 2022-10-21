@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 const CountryDetails = () => {
   const [countries, setCountries] = useState([]);
@@ -24,25 +25,33 @@ const CountryDetails = () => {
     fetchCountryData();
   }, [name]);
 
-  // const goBack = () => {
-  //   navigate("/");
-  // };
+  const goBack = () => {
+    navigate("/");
+  };
 
   return (
-    <main>
-      <Link to={"/"}>
-        <button>Back</button>
-      </Link>
-      {countries.map((country, index) => {
-        return (
-          <>
-            <div key={index}>
-              <img src={country.flags.svg} alt="" />
+    <>
+      <Header />
+      <main className="mx-20 my-12">
+        <button
+          className="w-[136px] p-2 bg-white shadow-shadow mb-20"
+          onClick={goBack}
+        >
+          Back
+        </button>
+        {countries.map((country, index) => (
+          <section key={index} className="flex flex-row justify-between">
+            <div className="w-[600px] h-[400px]">
+              <img
+                className="w-full h-full object-cover"
+                src={country.flags.svg}
+                alt=""
+              />
             </div>
-            <section>
-              <h2>Name:{country.name.common}</h2>
-              <div className="details">
-                <ul className="left">
+            <div className="flex flex-col font-Nunito w-[600px]">
+              <h2 className="font-bold">{country.name.common}</h2>
+              <div className="flex flex-row">
+                <ul className="">
                   <li>
                     Native Name:
                     {
@@ -54,9 +63,9 @@ const CountryDetails = () => {
                   <li>Population:{country.population}</li>
                   <li>Region:{country.region}</li>
                   <li>SubRegion:{country.subregion}</li>
-                </ul>
-                <ul className="right">
                   <li>Capital:{country.capital}</li>
+                </ul>
+                <ul className="">
                   <li>Top Level Domain:{country.tld}</li>
                   <li>
                     Currencies:
@@ -83,11 +92,11 @@ const CountryDetails = () => {
                     ))
                   : "-"}
               </div>
-            </section>
-          </>
-        );
-      })}
-    </main>
+            </div>
+          </section>
+        ))}
+      </main>
+    </>
   );
 };
 

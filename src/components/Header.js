@@ -3,7 +3,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 const Header = () => {
   return (
-    <header className="bg-white flex items-center h-20">
+    <header className="bg-white flex items-center h-20 shadow-shadow">
       <nav className="flex justify-between items-center w-screen px-20">
         <h1 className="font-Nunito font-bold text-2xl">Where in the world?</h1>
         <button className="flex justify-between">
