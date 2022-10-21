@@ -44,15 +44,19 @@ const CountryList = () => {
         (!selectInput || country.region === selectInput)
     );
     setFilteredResults(result);
-    console.log(result);
   }, [searchInput, countries, selectInput]);
 
   return (
     <>
-      <main>
-        <Searchbar searchCountry={searchCountry} value={searchInput} />
-        <Filterbar filterRegion={filteredCountryByRegion} value={selectInput} />
-        <section className="container-block">
+      <main className="mx-20 my-12">
+        <div className="flex justify-between mb-12">
+          <Searchbar searchCountry={searchCountry} value={searchInput} />
+          <Filterbar
+            filterRegion={filteredCountryByRegion}
+            value={selectInput}
+          />
+        </div>
+        <section className="grid grid-cols-4 gap-x-20 gap-y-16">
           {isLoading ? (
             <Loading />
           ) : filteredResults.length > 0 ? (

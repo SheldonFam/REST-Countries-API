@@ -4,7 +4,14 @@
 - Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
 - Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
 - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%) */
-:root {
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
   --bg: hsl(0, 0%, 98%);
   --ele: hsl(0, 0%, 100%);
   --text: hsl(200, 15%, 8%);
@@ -152,4 +159,4 @@ header {
 .country-info ul {
   line-height: 1.5rem;
   list-style: none;
-}
+} */

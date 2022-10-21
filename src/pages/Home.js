@@ -4,10 +4,10 @@ import CountryList from "../components/CountryList";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Header />
       <CountryList />
-    </div>
+    </>
   );
 };
 

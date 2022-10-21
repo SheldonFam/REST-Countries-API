@@ -8,7 +8,6 @@ const CountryDetails = () => {
   const navigate = useNavigate();
 
   let { name } = useParams();
-  console.log(name);
 
   useEffect(() => {
     const fetchCountryData = async () => {
@@ -17,7 +16,6 @@ const CountryDetails = () => {
           `https://restcountries.com/v3.1/name/${name}`
         );
         const data = await response.json();
-        console.log(data);
         setCountries(data);
       } catch (error) {
         console.log(error);
@@ -26,63 +24,69 @@ const CountryDetails = () => {
     fetchCountryData();
   }, [name]);
 
-  const goBack = () => {
-    navigate("/");
-    console.log("clicked");
-  };
+  // const goBack = () => {
+  //   navigate("/");
+  // };
 
   return (
     <main>
-      <button onClick={goBack}>Back</button>
-      {countries.map((country, index) => (
-        <>
-          <div key={index}>
-            <img src={country.flags.svg} alt="" />
-          </div>
-          <section>
-            <h2>Name:{country.name.common}</h2>
-            <div className="details">
-              <ul className="left">
-                <li>
-                  Native Name:
-                  {
-                    country.name.nativeName[
-                      Object.keys(country.name.nativeName)[0]
-                    ].official
-                  }
-                </li>
-                <li>Population:{country.population}</li>
-                <li>Region:{country.region}</li>
-                <li>SubRegion:{country.subregion}</li>
-              </ul>
-              <ul className="right">
-                <li>Capital:{country.capital}</li>
-                <li>Top Level Domain:{country.tld}</li>
-                <li>
-                  Currencies:
-                  {country.currencies[Object.keys(country.currencies)[0]].name}
-                </li>
-                <li>
-                  Language:
-                  {country.languages[Object.keys(country.languages)[0]]}
-                </li>
-              </ul>
+      <Link to={"/"}>
+        <button>Back</button>
+      </Link>
+      {countries.map((country, index) => {
+        return (
+          <>
+            <div key={index}>
+              <img src={country.flags.svg} alt="" />
             </div>
-            <div>
-              <p>Border Countries:</p>
-              {country.borders
-                ? country.borders.map((country, index) => (
-                    <Link to={`/${country.toLowerCase()}`}>
-                      <div className="badge" key={index}>
-                        {country}
-                      </div>
-                    </Link>
-                  ))
-                : "-"}
-            </div>
-          </section>
-        </>
-      ))}
+            <section>
+              <h2>Name:{country.name.common}</h2>
+              <div className="details">
+                <ul className="left">
+                  <li>
+                    Native Name:
+                    {
+                      country.name.nativeName[
+                        Object.keys(country.name.nativeName)[0]
+                      ].official
+                    }
+                  </li>
+                  <li>Population:{country.population}</li>
+                  <li>Region:{country.region}</li>
+                  <li>SubRegion:{country.subregion}</li>
+                </ul>
+                <ul className="right">
+                  <li>Capital:{country.capital}</li>
+                  <li>Top Level Domain:{country.tld}</li>
+                  <li>
+                    Currencies:
+                    {
+                      country.currencies[Object.keys(country.currencies)[0]]
+                        .name
+                    }
+                  </li>
+                  <li>
+                    Language:
+                    {country.languages[Object.keys(country.languages)[0]]}
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p>Border Countries:</p>
+                {country.borders
+                  ? country.borders.map((country, index) => (
+                      <Link to={`/${country.toLowerCase()}`}>
+                        <div className="badge" key={index}>
+                          {country}
+                        </div>
+                      </Link>
+                    ))
+                  : "-"}
+              </div>
+            </section>
+          </>
+        );
+      })}
     </main>
   );
 };
