@@ -19,6 +19,12 @@ module.exports = {
         darkGray: "hsl(0, 0%, 52%)",
         veryLightGray: "hsl(0, 0%, 98%)",
       },
+      maxWidth: {
+        560: "560px",
+      },
+      maxHeight: {
+        400: "400px",
+      },
     },
   },
   plugins: [],
