@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Country = ({ countries }) => {
-  const { name, capital, population, flags, region } = countries;
-
+  const { name, capital, population, flags, region, cca3 } = countries;
   return (
     <div className="flex flex-col bg-white min-h-30 shadow-shadow">
-      <Link to={`/${name.common.toLowerCase()}`}>
+      <Link to={`/${cca3}`}>
         <div className="w-full h-[160px]">
           <img
             className="w-full h-full object-cover"
