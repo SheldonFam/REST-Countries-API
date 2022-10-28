@@ -56,17 +56,19 @@ const CountryList = () => {
             value={selectInput}
           />
         </div>
-        <section className="grid grid-cols-4 gap-x-20 gap-y-16">
-          {isLoading ? (
-            <Loading />
-          ) : filteredResults.length > 0 ? (
-            filteredResults.map((country, index) => (
-              <Country countries={country} key={index} />
-            ))
-          ) : (
-            <p>No country...</p>
-          )}
-        </section>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <section className="grid grid-cols-4 gap-x-20 gap-y-16">
+            {filteredResults.length > 0 ? (
+              filteredResults.map((country, index) => {
+                return <Country countries={country} key={index} />;
+              })
+            ) : (
+              <p>No country...</p>
+            )}
+          </section>
+        )}
       </main>
     </>
   );

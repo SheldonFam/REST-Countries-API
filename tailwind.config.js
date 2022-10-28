@@ -25,6 +25,10 @@ module.exports = {
       maxHeight: {
         400: "400px",
       },
+      animation: {
+        bounce200: "bounce 1s infinite 200ms",
+        bounce400: "bounce 1s infinite 400ms",
+      },
     },
   },
   plugins: [],
