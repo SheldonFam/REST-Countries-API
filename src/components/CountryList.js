@@ -48,27 +48,24 @@ const CountryList = () => {
 
   return (
     <>
-      <main className="px-20 py-12 bg-veryLightGray">
-        <div className="flex justify-between mb-12">
+      <main className="px-7 py-12 md:px-20 md:py-12 bg-veryLightGray">
+        <div className="flex-col flex gap-y-12 md:flex-row md:justify-between mb-12">
           <Searchbar searchCountry={searchCountry} value={searchInput} />
           <Filterbar
             filterRegion={filteredCountryByRegion}
             value={selectInput}
           />
         </div>
-        {isLoading ? (
-          <Loading />
-        ) : (
-          <section className="grid grid-cols-4 gap-x-20 gap-y-16">
-            {filteredResults.length > 0 ? (
-              filteredResults.map((country, index) => {
-                return <Country countries={country} key={index} />;
-              })
-            ) : (
-              <p>No country...</p>
-            )}
-          </section>
-        )}
+        {isLoading && <Loading />}
+        <section className="grid grid-cols-1 gap-x-20 gap-y-16 px-6 md:grid-cols-2 lg:grid-cols-3 lg:px-0 xl:grid-cols-4 xl:px-0">
+          {filteredResults.length > 0 ? (
+            filteredResults.map((country, index) => {
+              return <Country countries={country} key={index} />;
+            })
+          ) : (
+            <p>No country...</p>
+          )}
+        </section>
       </main>
     </>
   );

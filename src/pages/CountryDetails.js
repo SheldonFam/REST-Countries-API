@@ -10,7 +10,6 @@ const CountryDetails = () => {
   const navigate = useNavigate();
 
   let { name } = useParams();
-  console.log(name);
 
   useEffect(() => {
     const fetchCountryData = async () => {
@@ -37,7 +36,7 @@ const CountryDetails = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <main className="px-20 py-12 bg-veryLightGray">
+        <main className="px-7 py-12 lg:px-20 lg:py-12 bg-veryLightGray">
           <button
             className="w-[136px] p-2 bg-white shadow-shadow mb-20"
             onClick={goBack}
@@ -48,7 +47,7 @@ const CountryDetails = () => {
             {countries.map((country, index) => (
               <div
                 key={index}
-                className="flex flex-row justify-between gap-x-32"
+                className="flex flex-col lg:flex-row lg:justify-between lg:gap-x-32"
               >
                 <div className="w-full max-w-560 max-h-400">
                   <img
@@ -61,7 +60,7 @@ const CountryDetails = () => {
                   <h2 className="font-bold mt-12 mb-11 text-3xl">
                     {country.name.common}
                   </h2>
-                  <div className="flex flex-row gap-x-10 mb-10">
+                  <div className="flex flex-col gap-y-10 lg:flex-row gap-x-10 mb-10">
                     <ul>
                       <li className="text-base pb-2">
                         <span className="font-bold">Native Name:</span>
@@ -108,11 +107,11 @@ const CountryDetails = () => {
                       </li>
                     </ul>
                   </div>
-                  <div className="flex flex-row items-center gap-x-2">
+                  <div className="flex flex-col lg:flex-row  gap-x-2">
                     <p>
                       <span className="font-bold">Border Countries:</span>
                     </p>
-                    <div className="flex flex-row gap-x-2">
+                    <div className="grid grid-cols-3 gap-4">
                       {country.borders
                         ? country.borders.map((border, index) => (
                             <Link to={`/${border}`} key={index}>
