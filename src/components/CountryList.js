@@ -48,7 +48,7 @@ const CountryList = () => {
 
   return (
     <>
-      <main className="px-7 py-12 md:px-20 md:py-12 bg-veryLightGray">
+      <main className="px-7 py-12 md:px-20 md:py-12 bg-veryLightGray ">
         <div className="flex-col flex gap-y-12 md:flex-row md:justify-between mb-12">
           <Searchbar searchCountry={searchCountry} value={searchInput} />
           <Filterbar

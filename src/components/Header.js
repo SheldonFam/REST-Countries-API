@@ -1,9 +1,9 @@
 import React from "react";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <header className="bg-white flex items-center h-20 shadow-shadow">
+    <header className="bg-white flex items-center h-20 shadow-shadow dark:bg-darkBlue">
       <nav className="flex justify-between items-center w-screen px-7 md:px-20">
         <h1 className="font-Nunito font-bold text-xl md:text-2xl">
           Where in the world?

@@ -36,7 +36,7 @@ const CountryDetails = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <main className="px-7 py-12 lg:px-20 lg:py-12 bg-veryLightGray">
+        <main className="px-7 py-12 lg:px-20 lg:py-12 bg-veryLightGray h-screen">
           <button
             className="w-[136px] p-2 bg-white shadow-shadow mb-20"
             onClick={goBack}
