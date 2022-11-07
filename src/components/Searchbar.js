@@ -1,17 +1,18 @@
 import React from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 
 const Searchbar = (props) => {
   return (
-    <>
+    <div className="flex items-center border border-gray-300 bg-white rounded-xl relative md:w-[480px]">
+      <AiOutlineSearch className="absolute pl-4 w-10 h-10" />
       <input
-        className="p-4 pl-10 w-full md:w-[480px] text-sm text-gray-900 bg-white rounded-lg border border-gray-300  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-        type="text"
+        className="pl-16 text-sm w-full h-full p-4 rounded-xl"
         id="name"
         placeholder="Search for a country..."
         onChange={props.searchCountry}
         value={props.value}
       />
-    </>
+    </div>
   );
 };
 
