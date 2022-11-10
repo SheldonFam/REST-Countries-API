@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Country = ({ countries }) => {
   const { name, capital, population, flags, region, cca3 } = countries;
   return (
-    <div className="flex-col bg-white shadow min-h-30 rounded-lg">
+    <div className="flex-col bg-white shadow min-h-30 rounded-lg dark:bg-darkBlue">
       <Link to={`/${cca3}`}>
         <div className="w-full h-[160px] rounded-lg">
           <img

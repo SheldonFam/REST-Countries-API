@@ -35,13 +35,13 @@ const CountryDetails = () => {
   };
 
   return (
-    <main className="px-7 py-12 md:px-20 md:py-12 bg-veryLightGray md:h-screen dark:bg-darkBlue">
+    <main className="px-7 py-12 md:px-20 md:py-12 bg-veryLightGray md:h-screen dark:bg-darkBlue transition-all">
       {isLoading ? (
         <Loading />
       ) : (
         <section>
           <button
-            className="w-[136px] p-2 bg-white shadow-shadow mb-20 flex items-center justify-evenly"
+            className="w-[136px] p-2 bg-veryLightGray shadow-shadow mb-20 flex items-center justify-evenly dark:bg-darkBlue"
             onClick={goBack}
           >
             <BsArrowLeft />
