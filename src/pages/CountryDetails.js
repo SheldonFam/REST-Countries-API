@@ -35,13 +35,13 @@ const CountryDetails = () => {
   };
 
   return (
-    <main className="px-7 py-12 md:px-20 md:py-12 bg-veryLightGray md:h-screen dark:bg-darkBlue transition-all">
+    <main className="px-7 py-12 md:px-20 md:py-12 md:h-screen bg-lightModeBackground dark:bg-darkModeBackground transition-all">
       {isLoading ? (
         <Loading />
       ) : (
         <section>
           <button
-            className="w-[136px] p-2 bg-veryLightGray shadow-shadow mb-20 flex items-center justify-evenly dark:bg-darkBlue"
+            className="w-[136px] p-2 mb-20 flex items-center justify-evenly bg-white dark:bg-darkModeElements text-lightModeText dark:text-white transition-all"
             onClick={goBack}
           >
             <BsArrowLeft />
@@ -50,7 +50,7 @@ const CountryDetails = () => {
           {countries.map((country, index) => (
             <div
               key={index}
-              className="flex flex-col lg:flex-row lg:justify-between lg:gap-x-32"
+              className="flex flex-col lg:flex-row lg:justify-between lg:gap-x-32  text-lightModeText dark:text-white"
             >
               <div className="w-full max-w-560 max-h-400">
                 <img
@@ -118,7 +118,7 @@ const CountryDetails = () => {
                     {country.borders
                       ? country.borders.map((border, index) => (
                           <Link to={`/${border}`} key={index}>
-                            <div className="py-2 px-8 border-solid shadow-shadow">
+                            <div className="py-2 px-8 border-lightModeBackground shadow-md text-lightModeText dark:text-white dark:border-darkModeElements dark:bg-darkModeElements">
                               {border}
                             </div>
                           </Link>

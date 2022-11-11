@@ -9,18 +9,22 @@ const Toggle = () => {
   return (
     <div>
       {theme === "dark" ? (
-        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-          <div className="flex flex-row items-center">
-            <FaRegSun />
-            <p className="pl-1 md:pl-2.5 font-normal text-base">Light Mode</p>
-          </div>
+        <button
+          className="flex flex-row items-center"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        >
+          <HiOutlineMoon className="text-white" />
+          <p className="pl-1 md:pl-2.5 font-normal text-base text-white">
+            Dark Mode
+          </p>
         </button>
       ) : (
-        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-          <div className="flex flex-row items-center">
-            <HiOutlineMoon />
-            <p className="pl-1 md:pl-2.5 font-normal text-base">Dark Mode</p>
-          </div>
+        <button
+          className="flex flex-row items-center"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        >
+          <FaRegSun />
+          <p className="pl-1 md:pl-2.5 font-normal text-base">Light Mode</p>
         </button>
       )}
     </div>
