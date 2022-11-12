@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeContext } from "./themeContext";
-import { HiOutlineMoon } from "react-icons/hi";
+import { HiMoon } from "react-icons/hi";
 import { FaRegSun } from "react-icons/fa";
 
 const Toggle = () => {
@@ -13,9 +13,9 @@ const Toggle = () => {
           className="flex flex-row items-center"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         >
-          <HiOutlineMoon className="text-white" />
+          <FaRegSun className="text-white" />
           <p className="pl-1 md:pl-2.5 font-normal text-base text-white">
-            Dark Mode
+            Light Mode
           </p>
         </button>
       ) : (
@@ -23,8 +23,8 @@ const Toggle = () => {
           className="flex flex-row items-center"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         >
-          <FaRegSun />
-          <p className="pl-1 md:pl-2.5 font-normal text-base">Light Mode</p>
+          <HiMoon />
+          <p className="pl-1 md:pl-2.5 font-normal text-base">Dark Mode</p>
         </button>
       )}
     </div>

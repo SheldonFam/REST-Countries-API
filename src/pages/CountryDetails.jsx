@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
-// import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
 import { BsArrowLeft } from "react-icons/bs";
 
 const CountryDetails = () => {
@@ -35,13 +33,13 @@ const CountryDetails = () => {
   };
 
   return (
-    <main className="px-7 py-12 md:px-20 md:py-12 md:h-screen bg-lightModeBackground dark:bg-darkModeBackground transition-all">
+    <main className="px-7 py-12 md:px-20 md:py-12 min-h-screen bg-lightModeBackground dark:bg-darkModeBackground transition-all">
       {isLoading ? (
         <Loading />
       ) : (
         <section>
           <button
-            className="w-[136px] p-2 mb-20 flex items-center justify-evenly bg-white dark:bg-darkModeElements text-lightModeText dark:text-white transition-all"
+            className="w-[136px] p-2 mb-20 flex items-center justify-around bg-white dark:bg-darkModeElements text-lightModeText dark:text-white shadow-md transition-all"
             onClick={goBack}
           >
             <BsArrowLeft />
@@ -110,17 +108,15 @@ const CountryDetails = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="flex flex-col lg:flex-row  gap-x-2">
-                  <p>
-                    <span className="font-bold">Border Countries:</span>
-                  </p>
-                  <div className="grid grid-cols-3 gap-4">
+                <div className="flex flex-col lg:flex-row gap-x-2">
+                  <p className="mb-2 font-bold">Border Countries:</p>
+                  <div className="grid grid-cols-4 gap-6">
                     {country.borders
                       ? country.borders.map((border, index) => (
                           <Link to={`/${border}`} key={index}>
-                            <div className="py-2 px-8 border-lightModeBackground shadow-md text-lightModeText dark:text-white dark:border-darkModeElements dark:bg-darkModeElements">
+                            <span className="px-4 py-2 border-lightModeBackground shadow text-lightModeText dark:text-white bg-white dark:bg-darkModeElements">
                               {border}
-                            </div>
+                            </span>
                           </Link>
                         ))
                       : "-"}
