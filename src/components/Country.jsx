@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Country = ({ countries }) => {
   const { name, capital, population, flags, region, cca3 } = countries;
   return (
-    <div className="flex-col min-h-30 rounded-lg  bg-white dark:bg-darkModeElements transition-all shadow ease-in duration-300">
+    <div className="flex-col min-h-30 rounded-lg bg-white dark:bg-darkModeElements transition-all shadow  trasition ease-in-out dekay-150 hover:-translate-y-1 hover:scale-110 duration-300">
       <Link to={`/${cca3}`}>
         <div className="w-full h-[160px] rounded-lg">
           <img
@@ -13,23 +13,24 @@ const Country = ({ countries }) => {
             alt={name.common}
           />
         </div>
+
+        <div className="font-Nunito text-left dark:text-white">
+          <h3 className="font-bold px-7 py-6 text-lg">{name.common}</h3>
+          <ul className="text-base pl-7">
+            <li>
+              <strong className="font-bold">Population:</strong> {population}
+            </li>
+            <li>
+              <strong>Region: </strong>
+              {region}
+            </li>
+            <li>
+              <strong>Capital: </strong>
+              {capital}
+            </li>
+          </ul>
+        </div>
       </Link>
-      <div className="font-Nunito text-left dark:text-white">
-        <h3 className="font-bold px-7 py-6 text-lg">{name.common}</h3>
-        <ul className="text-base px-7">
-          <li>
-            <strong className="font-bold">Population:</strong> {population}
-          </li>
-          <li>
-            <strong>Region: </strong>
-            {region}
-          </li>
-          <li>
-            <strong>Capital: </strong>
-            {capital}
-          </li>
-        </ul>
-      </div>
     </div>
   );
 };

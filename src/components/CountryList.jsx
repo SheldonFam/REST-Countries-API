@@ -3,6 +3,7 @@ import Country from "./Country";
 import Loading from "./Loading";
 import Searchbar from "./Searchbar";
 import Filterbar from "./Filterbar";
+import ScrollButton from "./Scrollbutton";
 
 const CountryList = () => {
   const URL = "https://restcountries.com/v3.1/all";
@@ -52,6 +53,7 @@ const CountryList = () => {
         <Searchbar searchCountry={searchCountry} value={searchInput} />
         <Filterbar filterRegion={filteredCountryByRegion} value={selectInput} />
       </div>
+      <ScrollButton />
       {isLoading ? (
         <Loading />
       ) : (
