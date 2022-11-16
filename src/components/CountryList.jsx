@@ -63,7 +63,7 @@ const CountryList = () => {
               return <Country countries={country} key={index} />;
             })
           ) : (
-            <p className="dark:text-white h-screen">No country...</p>
+            <p className="dark:text-white h-screen">No country found...</p>
           )}
         </section>
       )}

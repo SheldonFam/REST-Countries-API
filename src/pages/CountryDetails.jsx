@@ -39,10 +39,10 @@ const CountryDetails = () => {
       ) : (
         <section>
           <button
-            className="w-[136px] p-2 mb-20 flex items-center justify-around bg-white dark:bg-darkModeElements text-lightModeText dark:text-white shadow-md transition-all"
+            className="w-[136px] p-2 mb-20 flex items-center justify-center bg-white dark:bg-darkModeElements text-lightModeText dark:text-white shadow-md transition-all"
             onClick={goBack}
           >
-            <BsArrowLeft />
+            <BsArrowLeft className="mr-2" />
             Back
           </button>
           {countries.map((country, index) => (

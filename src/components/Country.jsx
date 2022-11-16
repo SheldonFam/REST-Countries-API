@@ -13,9 +13,8 @@ const Country = ({ countries }) => {
             alt={name.common}
           />
         </div>
-
         <div className="font-Nunito text-left dark:text-white">
-          <h3 className="font-bold px-7 py-6 text-lg">{name.common}</h3>
+          <h1 className="font-bold px-7 py-6 text-lg">{name.common}</h1>
           <ul className="text-base pl-7">
             <li>
               <strong className="font-bold">Population:</strong> {population}

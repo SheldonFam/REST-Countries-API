@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaArrowCircleUp } from "react-icons/fa";
+import { BsFillArrowUpSquareFill } from "react-icons/bs";
 
 const ScrollButton = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -19,8 +19,8 @@ const ScrollButton = () => {
   window.addEventListener("scroll", checkScrollTop);
 
   return (
-    <FaArrowCircleUp
-      className="fixed bottom-12 right-4 h-12 w-12 cursor-pointer"
+    <BsFillArrowUpSquareFill
+      className="fixed bottom-12 right-4 h-12 w-12 cursor-pointer dark:text-white"
       onClick={scrollTop}
       style={{ display: showScroll ? "flex" : "none" }}
     />
